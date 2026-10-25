@@ -11,20 +11,42 @@
 
 理由：
 
-1. **PCL2 的原版客户端可以直接连**：Paper 是与原版协议兼容的服务端，客户端不需要安装任何模组。只要客户端也是 Minecraft 26.3，就能进。
+1. **PCL2 的原版客户端可以直接连**：Paper 是与原版协议兼容的服务端，客户端不需要安装任何模组。服务端已加 ViaVersion + ViaBackwards，26.1.2 客户端也能进；26.3 客户端可用 `launch-client-26.3.bat`（Mesa llvmpipe）正常启动。
 2. **后续搭擂台/小游戏最方便**：Paper 支持 Bukkit/Spigot/Paper 插件，WorldGuard、Multiverse-Core、Essentials、LuckPerms、各类 PvP/小游戏插件都能用。
 3. **性能和稳定性比原版好**：Paper 对区块、实体、网络做了优化，适合长期开服和反复重启。
 4. **Fabric/Forge 只在“必须装模组”时才需要**：模组服要求客户端安装完全相同的加载器和模组，PCL2 朋友端也要同步，维护成本高。你现在的目标是原版客户端 + 局域网 + 以后加插件，Paper 是更合适的选择。
 
-版本关系：
+版本关系（以当前实际可用为准）：
 
 - 服务端：Paper 26.3，协议版本 777。
-- 客户端：PCL2 中安装 **Minecraft 26.3 原版**（不要装 Forge/Fabric，不要加会改变方块/物品的模组）。
+- 客户端：PCL2 中选 **Minecraft 26.1.2 原版**（不要装 Forge/Fabric，不要加会改变方块/物品的模组）。服务端已装 ViaVersion + ViaBackwards，26.1.2 可以正常进入 26.3 世界。26.3 原版客户端需要配合 `launch-client-26.3.bat` 的 Mesa 环境才能显示主菜单（见 A0）。
 - 如果以后确实要玩模组：把服务端换成同版本 Fabric/Forge，并让每个客户端安装同样的加载器和模组；本方案脚本仍可复用，只需替换 `server.jar` 和 `server.env` 中的 `MC_VERSION`。
 
 **关于 PCL2 自动化（重要）**：
 
 PCL2 是 GUI 启动器，没有受支持的命令行接口可以自动“进入某个世界 → 点击对局域网开放”。PCL2 的“联机”功能也依赖游戏内的“对局域网开放”界面。用 UI 自动化去点按钮不稳定，且每次窗口布局/版本更新都可能失效。因此本方案**不假设 PCL2 能自动点 GUI**，而是采用“独立服务端 + PCL2 客户端连接”的标准方案。
+
+---
+
+## A0. 当前可用方案（2026-10-25 修复，先看这里）
+
+这台虚拟机已经实际验证：**Minecraft 26.1.2 和 Minecraft 26.3 客户端都能进入 Paper 26.3 服务端**，服务端日志记录到 `joined the game` / `logged in with entity id`。
+
+- 服务端：Paper 26.3 build 218，协议 777，端口 25565，离线模式。
+- 已安装兼容插件：
+  - `plugins\ViaVersion-5.12.2-SNAPSHOT.jar`（支持 26.3 服务端）
+  - `plugins\ViaBackwards-5.12.2-SNAPSHOT.jar`（让 26.1.2 等旧客户端连 26.3 服务端）
+- 推荐客户端：**PCL2 中选择 Minecraft 26.1.2**（当前 `C:\.minecraft\PCL.ini` 已设为 26.1.2）。26.1.2 使用 VMware 硬件 OpenGL，帧率更好，是日常游玩的首选。
+- **26.3 客户端现在也能用**：这台虚拟机的 VMware SVGA 驱动（Mesa 23.2）缺少 `GL_ARB_buffer_storage` 扩展，导致 26.3 的 GUI 渲染器不显示主菜单。已下载 Mesa 26.2.4 到 `C:\mesa`，双击 `C:\MC-LAN-Server\launch-client-26.3.bat` 会用 Mesa llvmpipe（软件 OpenGL 4.6）启动 26.3 并自动连接 `192.168.1.12:25565`。llvmpipe 是 CPU 渲染，能玩但帧率低于 26.1.2；日常仍建议用 PCL 启动 26.1.2。
+- 已做过的系统级修复（换电脑/重装系统后需要重做）：
+  1. `C:\Windows\System32\drivers\etc\hosts` 增加 `127.0.0.1 sessionserver.mojang.com`。原因是客户端连接服务器前会请求 Mojang 的 `blockedservers` 列表，这个网络下该请求会无限挂起，导致一直停在“正在连接至服务器...”。离线模式下屏蔽它没有副作用；如果以后改用微软正版账号 / `online-mode=true`，请删除这一行。
+  2. 已运行 `firewall.bat`，放行入站 TCP 25565，并阻断外部 RCON 25575。
+- 启动顺序（日常）：
+  1. 双击 `C:\MC-LAN-Server\start.bat`（当前已经在运行，不要重复启动）。
+  2. 打开 PCL2，确认版本为 **26.1.2**，点“启动”。
+  3. 游戏主菜单 →「多人游戏」→「直接连接」→ 输入 `192.168.1.12:25565`。
+- 想用原生 26.3：直接双击 `launch-client-26.3.bat`（不要从 PCL 选 26.3，PCL 不会带上 Mesa 环境变量，仍会只有全景图）。如果以后 VMware Tools 更新到支持 OpenGL 4.6 + `GL_ARB_buffer_storage` 的驱动，可以删掉 Mesa 相关设置，直接用 PCL 启动 26.3。
+- 版本目录里还有一个 `26.4-snapshot-5`（PCL 下载的快照）。它同样受 VMware 驱动缺少 `GL_ARB_buffer_storage` 的影响，直接从 PCL 启动只会显示全景图；而且它的协议比服务端 26.3 新，不能连当前服务器。**PCL 的版本选择请保持 26.1.2**（已恢复），不要选 26.4-snapshot-5。
 
 ---
 
@@ -59,7 +81,7 @@ C:\MC-LAN-Server\
 │  └─ server.jar.download    # 下载临时文件（仅下载时存在）
 ├─ logs\                     # Minecraft 日志（latest.log 等）
 ├─ world\                    # 世界存档（主世界/下界/末地都在 world\dimensions 下）
-├─ plugins\                  # 以后放 Paper 插件
+├─ plugins\                  # Paper 插件（已放 ViaVersion / ViaBackwards）
 ├─ backups\                  # 一键备份生成的 ZIP（不会自动删除，需手动清理旧备份）
 ├─ config\ .paper\            # Paper 自身配置/缓存（自动生成，一般不用改）
 ├─ bukkit.yml spigot.yml commands.yml  # Paper 兼容配置（自动生成）
@@ -251,8 +273,8 @@ admin.bat list            :: 一次性执行
 2. 看窗口里的两行：
 
    ```text
-   本机局域网 IPv4 : 192.168.1.13（Ethernet0，/24）
-   其他电脑填写    : 192.168.1.13:25565
+   本机局域网 IPv4 : 192.168.1.12（Ethernet0，/24）
+   其他电脑填写    : 192.168.1.12:25565
    ```
 
 3. 也可以按 `Win+R` 输入 `cmd`，执行 `ipconfig`，找“IPv4 地址”。IPv4 形如 `192.168.x.x`、`10.x.x.x`、`172.16.x.x`–`172.31.x.x`。
@@ -260,12 +282,12 @@ admin.bat list            :: 一次性执行
 
 **朋友（另一台电脑）**：
 
-1. 打开 Minecraft Java 版（PCL2 启动的 26.3 原版客户端）。
+1. 打开 Minecraft Java 版（PCL2 启动的 26.1.2 原版客户端；服务端已装 Via 兼容插件）。
 2. 进入「多人游戏」→「直接连接」。
-3. 输入 `192.168.1.13:25565`，加入服务器。
+3. 输入 `192.168.1.12:25565`，加入服务器。
 4. 第一次进入会被服务器记录；如果要给朋友管理员权限，房主双击 `admin.bat`，输入 `op 朋友的游戏名`。
 
-> 如果客户端显示 `Outdated client! Please use 26.3`，说明当前启动的不是 26.3（常见是 PCL2 里选成了 26.1.2）。关闭游戏，在 PCL2 中改选 **26.3** 再启动；详见 H.5。
+> 如果客户端显示 `Outdated client! Please use 26.3`，先确认服务端 `plugins\` 下的 ViaVersion / ViaBackwards 是否还在、是否成功加载；详见 H.5。
 
 注意：
 
@@ -275,16 +297,16 @@ admin.bat list            :: 一次性执行
 
 ---
 
-## F. 用 PCL2 准备完全一致的客户端
+## F. 用 PCL2 准备客户端
 
-1. 打开 PCL2 →「下载」→ 搜索/选择 **Minecraft 26.3**（正式版）。
+1. 打开 PCL2 →「下载」→ 搜索/选择 **Minecraft 26.1.2**（正式版）。当前这台机器已经装好 26.1.2，直接在版本列表选它即可。
 2. 选择**原版（Vanilla）**安装，不要选 Forge/Fabric，除非你明确要开模组服。
-3. 安装完成后，在版本设置里确认游戏版本就是 `26.3`，并且没有额外启用的模组。
-4. 如果 PCL2 使用“版本隔离”，给这个 26.3 单独一个实例，避免其他整合包的模组混进来。
+3. 安装完成后，在版本设置里确认游戏版本就是 `26.1.2`，并且没有额外启用的模组。
+4. 如果 PCL2 使用“版本隔离”，给这个 26.1.2 单独一个实例，避免其他整合包的模组混进来。
 5. 登录方式：
    - 服务端 `ONLINE_MODE=false`：PCL2 可用离线登录，朋友不需要正版账号；正版账号也可以进。
    - 服务端 `ONLINE_MODE=true`：必须使用微软正版账号登录，离线账号会被拒绝。
-6. 客户端与服务端必须**大版本完全一致**（26.3 对 26.3）；26.1.2、26.2 客户端连 26.3 服务端会显示 `Outdated client! Please use 26.3`。
+6. 服务端已经安装 ViaVersion + ViaBackwards，26.1.2 客户端可以连 26.3 服务端。若想用 26.3，双击 `launch-client-26.3.bat`（带 Mesa llvmpipe 环境），不要直接从 PCL 选 26.3。
 
 ---
 
@@ -294,11 +316,18 @@ admin.bat list            :: 一次性执行
 
 本机已用**官方 Minecraft 26.3 原版客户端实际进入世界**，不是只检查端口或状态 ping：
 
-- 分别通过 `127.0.0.1:25565` 和 `192.168.1.13:25565` 成功加入，客户端未安装 Forge/Fabric。
+- 分别通过 `127.0.0.1:25565` 和 `192.168.1.12:25565` 成功加入，客户端未安装 Forge/Fabric。
 - 服务端日志记录到 `UUID of player`、`joined the game`、`logged in with entity id`；`admin.bat list` 返回 `There are 1 of a max of 10 players online`。
 - 已验证 `JVM_ARGS` 能正确传递含空格的参数值（用 `jcmd` 读取到对应系统属性），并能拦截 `-jar` 这类会破坏启动命令的参数。
 - 当时为 `online-mode=false` 离线模式；客户端测试只用于验收，不改变玩家的正常使用方式。
 - 由于测试客户端和服务器在同一台虚拟机内，**仍需用第二台物理电脑做一次跨机验收**，重点确认 VMware 为桥接、路由器未开启 AP 隔离。这最后一步无法在当前单机虚拟机里替你完成。
+
+### 2026-10-25 修复验证（26.1.2 + Via）
+
+- 服务端保持 Paper 26.3 build 218，安装 ViaVersion 5.12.2-SNAPSHOT + ViaBackwards 5.12.2-SNAPSHOT 后重启，日志显示 `ViaVersion detected server version: 26.3 (777)`、`[ViaBackwards] Enabling`。
+- 用官方 Minecraft 26.1.2 客户端通过 `--quickPlayMultiplayer 192.168.1.12:25565` 实际进入世界，服务端日志记录 `UUID of player xxxx`、`joined the game`、`logged in with entity id`。
+- 之前 26.1.2 卡在“正在连接至服务器...”的根因不是服务端：客户端在连接前请求 `https://sessionserver.mojang.com/blockedservers` 时无限等待。已在 hosts 中把该域名指向 `127.0.0.1`，连接在几秒内完成。
+- 26.3 原版客户端之前会卡在模糊全景图、不显示主菜单；日志显示 OpenGL 4.3 / Mesa 23.2 / SVGA3D。根因是 VMware SVGA 驱动缺少 `GL_ARB_buffer_storage` 扩展。已用 Mesa 26.2.4 llvmpipe（软件 OpenGL 4.6，提供该扩展）解决：`launch-client-26.3.bat` 启动后主菜单正常显示，并实际进入服务器（`logged in with entity id 1402`）。llvmpipe 为 CPU 渲染，日常仍推荐帧率更高的 26.1.2。
 
 ### 一键备份实测（2026-10-25）
 
@@ -311,7 +340,7 @@ admin.bat list            :: 一次性执行
 ### 检查项
 
 - [ ] 双击 `start.bat`，窗口打印本机 IPv4、`IP:25565`、服务端版本（Minecraft 26.3）、加载器（Paper build 218）、最大人数、正版验证状态。
-- [ ] 同一局域网另一台电脑能 ping 通房主 IPv4（`ping 192.168.1.13`）。
+- [ ] 同一局域网另一台电脑能 ping 通房主 IPv4（`ping 192.168.1.12`）。
 - [ ] 朋友在 Minecraft「直接连接」输入 `IP:25565` 能进入世界。
 - [ ] 服务器窗口出现朋友的加入日志；按 `Tab` 能看到玩家列表。
 - [ ] 朋友放置/破坏方块后，房主能看到；重启后世界还在。
@@ -369,9 +398,10 @@ admin.bat list            :: 一次性执行
 ### 5. 版本/模组不一致
 
 - 现象：客户端显示 **`Outdated client! Please use 26.3`**（中文界面为“无法连接至服务器 / 客户端版本过旧”）。
-- 原因：当前启动的客户端不是 26.3。例如 PCL2 里同时装了 26.1.2 和 26.3，但启动的是 26.1.2；服务端是 Paper 26.3（协议 777），会拒绝旧协议。
-- 解决：关闭当前游戏 → 在 PCL2 的版本选择里选 **26.3**（不是 26.1.2）→ 启动 → 再连接 `192.168.1.13:25565`。
-- 客户端必须 26.3；服务端 jar 也必须是 26.3。启动脚本会检查 jar 内的 `version.json`，不一致会直接报错。
+- 原因：ViaVersion / ViaBackwards 没有加载，或者客户端协议比插件支持的范围还旧。正常情况下服务端已装这两个插件，26.1.2 客户端可以进。
+- 先确认 `plugins\` 下两个 Via jar 还在，服务端启动日志出现 `ViaVersion detected server version: 26.3 (777)` 和 `[ViaBackwards] Enabling`。
+- 解决：关闭游戏 → 在 PCL2 的版本选择里选 **26.1.2** → 启动 → 再连接 `192.168.1.12:25565`。如果仍报旧版，检查是否误删了 Via 插件或用了更老的客户端。
+- 服务端 jar 必须是 26.3；启动脚本会检查 jar 内的 `version.json`，不一致会直接报错。
 - Paper 服务端不需要客户端装任何模组；如果客户端装了 Forge/Fabric 且加了改变内容的模组，可能进不去或方块异常。
 - 用 PCL2 的“版本隔离”给服务器客户端单独建一个干净的 26.3 实例。
 - 如果以后改用 Fabric/Forge：服务端和所有客户端必须同加载器、同游戏版本、同模组列表。
@@ -423,4 +453,4 @@ admin.bat list            :: 一次性执行
 - 定期备份：双击 `backup.bat` 即可；服务器运行中也能备份，脚本会先暂停自动保存并刷盘。备份 ZIP 含 `server.properties`（内有 RCON 密码），不要外传。也可以停止服务器后手动复制 `world`、`plugins`、`config` 等目录到其他盘。
 - 不要把 `server.properties` 里的 RCON 密码发给别人；外部 25575 已被防火墙阻断。
 - 更新服务端：先 `stop.bat` → `download-server.bat`（会备份旧 jar）→ `start.bat`。
-- 本方案不修改系统级配置，不删除世界；只新增/更新本目录文件、防火墙规则和 `run\server.pid`。
+- 本方案不删除世界；会新增/更新本目录文件、`run\server.pid`、Windows 防火墙规则，以及 `hosts` 中的 `127.0.0.1 sessionserver.mojang.com` 一行（离线模式加速连接用，换正版账号时请删除）。

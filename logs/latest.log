@@ -1,63 +1,120 @@
-[22:10:09] [ServerMain/INFO]: [bootstrap] Running Java 27 (Java HotSpot(TM) 64-Bit Server VM 27.0.1.0.2+1-2; Oracle Corporation null) on Windows 10 10.0 (amd64)
-[22:10:09] [ServerMain/INFO]: [bootstrap] Loading Paper 26.3-218-main@1b9bf5c (2026-10-23T13:47:43Z) for Minecraft 26.3
-[22:10:09] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[22:10:10] [ServerMain/INFO]: [PluginInitializerManager] Initialized 0 plugins
-[22:10:17] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[22:10:17] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
-[22:10:17] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 783.4ms
-[22:10:20] [Worker-Main-1/INFO]: Loaded 1866 advancements
-[22:10:21] [Server thread/INFO]: Starting minecraft server version 26.3
-[22:10:21] [Server thread/WARN]: ****************************
-[22:10:21] [Server thread/WARN]: YOU ARE RUNNING THIS SERVER AS AN ADMINISTRATIVE OR ROOT USER. THIS IS NOT ADVISED.
-[22:10:21] [Server thread/WARN]: YOU ARE OPENING YOURSELF UP TO POTENTIAL RISKS WHEN DOING THIS.
-[22:10:21] [Server thread/WARN]: FOR MORE INFORMATION, SEE https://madelinemiller.dev/blog/root-minecraft-server/
-[22:10:21] [Server thread/WARN]: ****************************
-[22:10:21] [Server thread/INFO]: Loading properties
-[22:10:21] [Server thread/INFO]: This server is running Paper version 26.3-218-main@1b9bf5c (2026-10-23T13:47:43Z) (Implementing API version 26.3.build.218-stable)
-[22:10:21] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[22:10:21] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[22:10:21] [Server thread/INFO]: Using 4 threads for Netty based IO
-[22:10:22] [Server thread/INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
-[22:10:22] [Server thread/INFO]: Default game type: SURVIVAL
-[22:10:22] [Server thread/INFO]: Generating keypair
-[22:10:22] [Server thread/INFO]: Starting Minecraft server on *:25565
-[22:10:22] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[22:10:22] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[22:10:22] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[22:10:22] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[22:10:22] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[22:10:22] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[22:10:22] [Server thread/INFO]: Preparing level "world"
-[22:10:23] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
-[22:10:23] [Server thread/INFO]: Prepared spawn area in 2 ms
-[22:10:23] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
-[22:10:23] [Server thread/INFO]: Prepared spawn area in 1 ms
-[22:10:23] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
-[22:10:23] [Server thread/INFO]: Prepared spawn area in 1 ms
-[22:10:23] [Server thread/INFO]: Done preparing level "world" (0.618s)
-[22:10:23] [Server thread/INFO]: [spark] Starting background profiler...
-[22:10:23] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows10/amd64), so the built-in Java engine will be used instead.
-[22:10:23] [Server thread/INFO]: Starting remote control listener
-[22:10:23] [Server thread/INFO]: Thread RCON Listener started
-[22:10:23] [Server thread/INFO]: RCON running on 0.0.0.0:25575
-[22:10:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[22:10:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[22:10:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[22:10:23] [Server thread/INFO]: Running delayed init tasks
-[22:10:23] [Server thread/INFO]: Done (15.285s)! For help, type "help"
-[22:10:25] [Paper Async Task Handler Thread - 1/INFO]: *** Currently you are 4 builds behind ***
-[22:10:25] [Paper Async Task Handler Thread - 1/INFO]: *** It is highly recommended to download the latest build from https://papermc.io/downloads/paper ***
-[22:10:31] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
-[22:10:31] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now disabled]
-[22:10:32] [Server thread/INFO]: System chat: [Rcon: Saved the game]
-[22:10:33] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now enabled]
-[22:10:33] [RCON Client /127.0.0.1 #2/INFO]: Thread RCON Client /127.0.0.1 shutting down
-[22:11:42] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
-[22:11:42] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now disabled]
-[22:11:42] [Server thread/INFO]: System chat: [Rcon: Saved the game]
-[22:11:43] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now enabled]
-[22:11:43] [RCON Client /127.0.0.1 #3/INFO]: Thread RCON Client /127.0.0.1 shutting down
-[22:15:57] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
-[22:15:57] [RCON Client /127.0.0.1 #4/INFO]: Thread RCON Client /127.0.0.1 shutting down
-[22:16:24] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
-[22:16:24] [RCON Client /127.0.0.1 #5/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[14:29:51] [ServerMain/INFO]: [bootstrap] Running Java 27 (Java HotSpot(TM) 64-Bit Server VM 27.0.1.0.3+1-2; Oracle Corporation null) on Windows 10 10.0 (amd64)
+[14:29:51] [ServerMain/INFO]: [bootstrap] Loading Paper 26.3-218-main@1b9bf5c (2026-10-23T13:47:43Z) for Minecraft 26.3
+[14:29:51] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[14:29:52] [ServerMain/INFO]: [PluginInitializerManager] Initialized 2 plugins
+[14:29:52] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (2):
+ - ViaBackwards (5.12.2-SNAPSHOT), ViaVersion (5.12.2-SNAPSHOT)
+[14:29:58] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[14:29:58] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
+[14:29:59] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 697.5ms
+[14:30:02] [Worker-Main-2/INFO]: Loaded 1866 advancements
+[14:30:02] [Server thread/INFO]: Starting minecraft server version 26.3
+[14:30:02] [Server thread/WARN]: ****************************
+[14:30:02] [Server thread/WARN]: YOU ARE RUNNING THIS SERVER AS AN ADMINISTRATIVE OR ROOT USER. THIS IS NOT ADVISED.
+[14:30:02] [Server thread/WARN]: YOU ARE OPENING YOURSELF UP TO POTENTIAL RISKS WHEN DOING THIS.
+[14:30:02] [Server thread/WARN]: FOR MORE INFORMATION, SEE https://madelinemiller.dev/blog/root-minecraft-server/
+[14:30:02] [Server thread/WARN]: ****************************
+[14:30:02] [Server thread/INFO]: Loading properties
+[14:30:02] [Server thread/INFO]: This server is running Paper version 26.3-218-main@1b9bf5c (2026-10-23T13:47:43Z) (Implementing API version 26.3.build.218-stable)
+[14:30:02] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[14:30:02] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:30:02] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:30:03] [Server thread/INFO]: [MoonriseCommon] Paper is using 1 worker threads, 1 I/O threads
+[14:30:03] [Server thread/INFO]: Default game type: SURVIVAL
+[14:30:03] [Server thread/INFO]: Generating keypair
+[14:30:03] [Server thread/INFO]: Starting Minecraft server on *:25565
+[14:30:03] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[14:30:03] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[14:30:04] [Server thread/INFO]: [ViaVersion] Loading server plugin ViaVersion v5.12.2-SNAPSHOT
+[14:30:04] [Server thread/INFO]: [ViaVersion] ViaVersion 5.12.2-SNAPSHOT is now loaded. Registering protocol transformers and injecting...
+[14:30:05] [Server thread/INFO]: [ViaBackwards] Loading translations...
+[14:30:05] [Server thread/INFO]: [ViaBackwards] Registering protocols...
+[14:30:05] [Server thread/INFO]: [ViaBackwards] Loading server plugin ViaBackwards v5.12.2-SNAPSHOT
+[14:30:05] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[14:30:05] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[14:30:05] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[14:30:05] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[14:30:05] [Server thread/INFO]: Preparing level "world"
+[14:30:06] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
+[14:30:06] [Server thread/INFO]: Preparing spawn area: 100%
+[14:30:06] [Server thread/INFO]: Prepared spawn area in 3 ms
+[14:30:06] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
+[14:30:06] [Server thread/INFO]: Prepared spawn area in 0 ms
+[14:30:06] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
+[14:30:06] [Server thread/INFO]: Prepared spawn area in 1 ms
+[14:30:06] [Server thread/INFO]: Done preparing level "world" (0.680s)
+[14:30:06] [Server thread/INFO]: [ViaVersion] Enabling ViaVersion v5.12.2-SNAPSHOT
+[14:30:06] [Server thread/INFO]: [ViaVersion] ViaVersion detected server version: 26.3 (777)
+[14:30:06] [Server thread/INFO]: [ViaBackwards] Enabling ViaBackwards v5.12.2-SNAPSHOT
+[14:30:06] [Server thread/INFO]: [spark] Starting background profiler...
+[14:30:06] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows10/amd64), so the built-in Java engine will be used instead.
+[14:30:06] [Server thread/INFO]: Starting remote control listener
+[14:30:06] [Server thread/INFO]: Thread RCON Listener started
+[14:30:06] [Server thread/INFO]: RCON running on 0.0.0.0:25575
+[14:30:06] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[14:30:06] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[14:30:06] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[14:30:06] [Server thread/INFO]: Running delayed init tasks
+[14:30:06] [Server thread/INFO]: Done (16.389s)! For help, type "help"
+[14:30:06] [Craft Scheduler Thread - 2 - ViaVersion/INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor.
+[14:30:07] [Server thread/INFO]: [ViaVersion] You are running a development version of the plugin, please report any bugs to GitHub.
+[14:30:08] [Paper Async Task Handler Thread - 1/INFO]: *** Currently you are 4 builds behind ***
+[14:30:08] [Paper Async Task Handler Thread - 1/INFO]: *** It is highly recommended to download the latest build from https://papermc.io/downloads/paper ***
+[14:36:33] [User Authenticator #0/INFO]: UUID of player xxxx is 2ccf36d8-03c1-32a6-9800-1ac5b2fe375e
+[14:36:36] [Server thread/INFO]: System chat: xxxx joined the game
+[14:36:36] [Server thread/INFO]: xxxx[/192.168.1.12:53751] logged in with entity id 66 at ([minecraft:overworld]57.5, 63.0, -1.5)
+[14:37:44] [Server thread/INFO]: System chat: xxxx was slain by Zombie
+[14:38:42] [Server thread/INFO]: xxxx lost connection: Disconnected
+[14:38:42] [Server thread/INFO]: System chat: xxxx left the game
+[14:39:01] [User Authenticator #1/INFO]: UUID of player xxxx is 2ccf36d8-03c1-32a6-9800-1ac5b2fe375e
+[14:39:03] [Server thread/INFO]: System chat: xxxx joined the game
+[14:39:03] [Server thread/INFO]: xxxx[/192.168.1.12:53797] logged in with entity id 277 at ([minecraft:overworld]58.69999998807907, 61.0, -1.300000011920929)
+[14:54:36] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[14:54:36] [RCON Client /127.0.0.1 #2/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[14:54:48] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[14:54:48] [Server thread/INFO]: System chat: [Rcon: Set minecraft:overworld to time marker minecraft:day]
+[14:54:49] [RCON Client /127.0.0.1 #3/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[14:54:51] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[14:54:51] [Server thread/INFO]: System chat: [Rcon: Set the weather to clear]
+[14:54:52] [RCON Client /127.0.0.1 #4/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[14:54:54] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[14:54:55] [RCON Client /127.0.0.1 #5/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[14:54:57] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[14:54:58] [RCON Client /127.0.0.1 #6/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[14:56:22] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[14:56:23] [RCON Client /127.0.0.1 #7/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[15:00:20] [Server thread/INFO]: System chat: xxxx was slain by Zombie
+[15:00:29] [Server thread/INFO]: System chat: xxxx was slain by Zombie
+[15:03:58] [Server thread/INFO]: System chat: xxxx was slain by Drowned
+[15:16:36] [User Authenticator #2/INFO]: UUID of player xxxx is 2ccf36d8-03c1-32a6-9800-1ac5b2fe375e
+[15:16:36] [Server thread/INFO]: xxxx lost connection: You logged in from another location
+[15:16:36] [Server thread/INFO]: System chat: xxxx left the game
+[15:16:37] [Server thread/INFO]: System chat: xxxx joined the game
+[15:16:37] [Server thread/INFO]: xxxx[/192.168.1.12:55165] logged in with entity id 1048 at ([minecraft:overworld]88.30000001192093, 62.0, 139.69999998807907)
+[15:18:57] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[15:18:57] [Server thread/INFO]: System chat: [Rcon: Killed 5 entities]
+[15:18:57] [RCON Client /127.0.0.1 #8/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[15:19:00] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[15:19:00] [RCON Client /127.0.0.1 #9/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[15:19:03] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[15:19:03] [Server thread/INFO]: System chat: [Rcon: Killed 2 entities]
+[15:19:03] [RCON Client /127.0.0.1 #10/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[15:19:06] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[15:19:06] [Server thread/INFO]: System chat: [Rcon: Set minecraft:overworld to time marker minecraft:day]
+[15:19:06] [RCON Client /127.0.0.1 #11/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[15:19:09] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[15:19:09] [Server thread/INFO]: System chat: [Rcon: Set the weather to clear]
+[15:19:09] [RCON Client /127.0.0.1 #12/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[15:19:12] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[15:19:12] [RCON Client /127.0.0.1 #13/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[15:19:56] [Server thread/INFO]: xxxx lost connection: Disconnected
+[15:19:56] [Server thread/INFO]: System chat: xxxx left the game
+[15:23:43] [User Authenticator #3/INFO]: UUID of player xxxx is 2ccf36d8-03c1-32a6-9800-1ac5b2fe375e
+[15:23:44] [Server thread/INFO]: System chat: xxxx joined the game
+[15:23:44] [Server thread/INFO]: xxxx[/192.168.1.12:55285] logged in with entity id 1402 at ([minecraft:overworld]72.5, 64.0, 8.5)
+[15:26:11] [Server thread/INFO]: xxxx lost connection: Disconnected
+[15:26:11] [Server thread/INFO]: System chat: xxxx left the game
+[15:26:38] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[15:26:38] [RCON Client /127.0.0.1 #14/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[15:29:43] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[15:29:43] [RCON Client /127.0.0.1 #15/INFO]: Thread RCON Client /127.0.0.1 shutting down
