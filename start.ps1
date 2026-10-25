@@ -19,7 +19,7 @@ function Stop-McStart {
     exit 1
 }
 
-Write-McTitle 'Minecraft 局域网服务器（Paper）一键启动'
+Write-McTitle 'Minecraft 局域网服务器（Fabric）一键启动'
 Write-McInfo "服务端目录：$Root"
 
 $envFile = Join-Path $Root 'server.env'
@@ -33,7 +33,7 @@ $defaults = @{
     SERVER_JAR          = 'server.jar'
     SERVER_PORT         = '25565'
     ONLINE_MODE         = 'false'
-    MOTD                = 'Paper LAN Server | 26.3'
+    MOTD                = 'Fabric LAN Server | 26.3'
     MAX_PLAYERS         = '10'
     VIEW_DISTANCE       = '10'
     SIMULATION_DISTANCE = '10'
@@ -164,7 +164,7 @@ if ($rconPortOwners.Count -gt 0) {
 
 if (-not (Test-Path -LiteralPath $jarPath -PathType Leaf)) {
     Write-McError "未找到服务端 jar：$jarPath"
-    Write-McInfo '首次部署请双击 download-server.bat 自动下载 Paper，或手动把服务端 jar 放到上面的路径。'
+    Write-McInfo '首次部署请确认 fabric-server-launch.jar 和 server.jar 已就位；不要用 download-server.bat 覆盖 Fabric 启动器。'
     Write-McInfo "如果手动下载，请确认文件名与 server.env 中的 SERVER_JAR 一致（当前：$serverJarRel）。"
     exit 1
 }

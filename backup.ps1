@@ -70,6 +70,8 @@ $tempPath = Join-Path $backupDir ('.backup-' + [guid]::NewGuid().ToString('N') +
 $items = @(
     [pscustomobject]@{ Relative = 'world'; IsDirectory = $true },
     [pscustomobject]@{ Relative = 'plugins'; IsDirectory = $true },
+    [pscustomobject]@{ Relative = 'mods'; IsDirectory = $true },
+    [pscustomobject]@{ Relative = 'mods-disabled'; IsDirectory = $true },
     [pscustomobject]@{ Relative = 'config'; IsDirectory = $true },
     [pscustomobject]@{ Relative = 'server.properties'; IsDirectory = $false },
     [pscustomobject]@{ Relative = 'server.env'; IsDirectory = $false },
